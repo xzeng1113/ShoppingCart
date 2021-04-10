@@ -3,10 +3,8 @@
 <head th:replace="/fragments/head">
 </head>
 <body>
-
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" th:replace="/fragments/nav :: nav-admin">
 </nav>
-
 <div class="container">
     <h1 class="display-2">Pages</h1>
     <a href="/admin/pages/add" class="btn btn-primary">Add new</a>
@@ -22,15 +20,13 @@
             <td th:text="${page.title}"></td>
             <td th:text="${page.casing}"></td>
             <td><a th:href="@{'/admin/pages/edit/' + ${page.id}}">Edit</a></td>
-            <td><a th:href="@{'/admin/pages/delete/' + ${page.id}}">Delete</a></td>
-
+            <td><a th:if="${page.casing != 'home'}" th:href="@{'/admin/pages/delete/' + ${page.id}}" class="confirmDeletion">Delete</a></td>
         </tr>
     </table>
     <div th:unless="${!pages.empty}">
         <p>There are no pages</p>
     </div>
 </div>
-
 <footer class="container" th:replace="/fragments/footer">
 </footer>
 </body>
